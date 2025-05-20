@@ -6,17 +6,35 @@
 //
 
 import SwiftUI
+import RealityKit
 
 struct ContentView: View {
+    
+    @State private var isControlsVisible: Bool = true
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        ZStack(alignment: .bottom) {
+            
+            ARViewContainer()
+            ControlView(isControlsVisible: $isControlsVisible)
+        }.edgesIgnoringSafeArea(.all)
     }
+}
+
+struct ARViewContainer: UIViewRepresentable {
+    
+    func makeUIView(context: Context) ->
+    
+        ARView {
+            
+            let arView = ARView(frame: .zero)
+            
+            return arView
+            
+        }
+    
+    func updateUIView( _ uiView: ARView, context: Context) {}
+    
 }
 
 #Preview {

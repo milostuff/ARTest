@@ -14,7 +14,7 @@ struct ControlView: View {
     var body: some View {
         VStack {
             
-            ControlVisibilityToggleButton(isControlsVisible: $isControlsVisible)
+            //ControlVisibilityToggleButton(isControlsVisible: $isControlsVisible)
             
             Spacer()
             

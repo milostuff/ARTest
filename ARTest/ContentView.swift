@@ -9,13 +9,12 @@ import SwiftUI
 import RealityKit
 
 struct ContentView: View { 
-    @State private var isControlsVisible: Bool = true
     @State private var isButtonVisible: Bool = true
     
     var body: some View {
         ZStack(alignment: .bottom) {
             ARViewContainer()
-            ControlView(isControlsVisible: $isControlsVisible)
+            ControlView()
                 .opacity(isButtonVisible ? 1 : 0)
         }
         .onTapGesture {isButtonVisible.toggle()}

@@ -22,7 +22,7 @@ struct MenuItem: View {
         HStack {
             ItemFormat(systemIconName: "textformat.alt") {
                 print("Text button pressed")
-            }
+            }.offset(x:100, y: 50)
 
             Spacer()
 
@@ -34,7 +34,7 @@ struct MenuItem: View {
 
             ItemFormat(systemIconName: "photo") {
                 print("Image/Sticker button pressed")
-            }
+            }.offset(x: -100, y: 50)
                         
         }
     }

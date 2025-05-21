@@ -9,53 +9,15 @@ import SwiftUI
 
 struct ControlView: View {
     
-    @Binding var isControlsVisible: Bool
-    
     var body: some View {
         VStack {
-            
-            //ControlVisibilityToggleButton(isControlsVisible: $isControlsVisible)
-            
             Spacer()
-            
-            if isControlsVisible {
-                ControlButtonBar()
-
-            }
-            
-        }
-    }
-}
-
-struct ControlVisibilityToggleButton: View {
-    
-    @Binding var isControlsVisible: Bool
-    
-    var body: some View {
-        HStack {
-
-            ZStack {
-                
-                Color.black.opacity(0.25)
-                
-                Button(action: {
-                    print("Control Visibility Toggle Button pressed.")
-                    self.isControlsVisible.toggle()
-                }) {
-                    Image(systemName: self.isControlsVisible ? "rectangle" : "slider.horizontal.below.rectangle")
-                        .font(.system(size: 25))
-                        .foregroundColor(.white)
-                        .buttonStyle(PlainButtonStyle())
-                }
-            }
-            .frame(width: 50, height: 50)
-            .cornerRadius(8.0)
-        }
-        .padding(.top, 45)
-        .padding(.trailing, 20)
         
+            ControlButtonBar()
+        }
     }
 }
+
 
 struct TabAddMediaIcon: View {
     
@@ -98,8 +60,6 @@ struct ControlButtonBar: View {
             .frame(height: UIScreen.main.bounds.height / 8)
             .frame(maxWidth: .infinity)
             .padding(30)
-            .background(Color.black
-                .opacity(0.25))
             
             if showMenu {
                 PopUpMenu()

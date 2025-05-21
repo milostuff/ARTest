@@ -33,8 +33,7 @@ struct ControlVisibilityToggleButton: View {
     
     var body: some View {
         HStack {
-            Spacer()
-            
+
             ZStack {
                 
                 Color.black.opacity(0.25)
@@ -54,52 +53,58 @@ struct ControlVisibilityToggleButton: View {
         }
         .padding(.top, 45)
         .padding(.trailing, 20)
+        
+    }
+}
+
+struct TabAddMediaIcon: View {
+    
+    @Binding var showMenu: Bool
+    
+    var body: some View {
+        ZStack {
+            Circle()
+                .foregroundColor(.white)
+                .frame(width: 56, height: 56)
+                .shadow(radius: 4)
+
+            
+            Image(systemName: "plus.circle.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+                .rotationEffect(Angle(degrees: showMenu ? 45 : 0))
+                
+        }
     }
 }
 
 struct ControlButtonBar: View {
-    var body: some View {
-        HStack {
-            
-            ControlButton(systemIconName: "textformat.alt") {
-                print("Text button pressed")
-            }
-            
-            Spacer()
-            
-            ControlButton(systemIconName: "textformat.alt") {
-                print("Sticker button pressed")
-            }
-            
-            Spacer()
-            
-            ControlButton(systemIconName: "textformat.alt") {
-                print("Audio button pressed")
-            }
-            
-        }
-        .frame(maxWidth: 500)
-        .padding(30)
-        .background(Color.black
-            .opacity(0.25))
-    }
-}
-
-struct ControlButton: View {
     
-    let systemIconName: String
-    let action: () -> Void
+    @State private var showMenu = false
     
     var body: some View {
-        
-        Button(action: {
-            self.action()
-        }) {
-            Image(systemName: systemIconName)
-                .font(.system(size: 35))
-                .foregroundColor(.white)
-                .buttonStyle(PlainButtonStyle())
+        ZStack(alignment: .bottom) {
+            HStack {
+                
+                TabAddMediaIcon(showMenu: $showMenu)
+                    .onTapGesture {
+                        withAnimation {
+                            showMenu.toggle()
+                        }
+                    }
+                
+            }
+            .frame(height: UIScreen.main.bounds.height / 8)
+            .frame(maxWidth: .infinity)
+            .padding(30)
+            .background(Color.black
+                .opacity(0.25))
+            
+            if showMenu {
+                PopUpMenu()
+                    .padding(.bottom, 144)
+            }
         }
-        .frame(width: 50, height: 50)
     }
 }

@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct PopUpMenu: View {
+    
+    @Binding var showBrowse: Bool
+    
     var body: some View {
         HStack {
-            MenuItem()
+            MenuItem(showBrowse: $showBrowse)
             Spacer()
         }
     }
 }
 
 struct MenuItem: View {
+    
+    @Binding var showBrowse: Bool
     
     var body: some View {
         HStack {
@@ -34,7 +39,12 @@ struct MenuItem: View {
 
             ItemFormat(systemIconName: "photo") {
                 print("Image/Sticker button pressed")
+                self.showBrowse.toggle()
             }.offset(x: -100, y: 50)
+                .sheet(isPresented: $showBrowse, content: {
+                    BrowseView(showBrowse: $showBrowse)
+                        .presentationDetents([.medium, .large])
+                })
                         
         }
     }
@@ -64,10 +74,6 @@ struct ItemFormat: View {
         }
 
     }
-}
-
-#Preview {
-    PopUpMenu()
 }
 
 

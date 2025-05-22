@@ -44,6 +44,7 @@ struct TabAddMediaIcon: View {
 struct ControlButtonBar: View {
     
     @State private var showMenu = false
+    @State var showBrowse: Bool = false
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -62,7 +63,7 @@ struct ControlButtonBar: View {
             .padding(30)
             
             if showMenu {
-                PopUpMenu()
+                PopUpMenu(showBrowse: $showBrowse)
                     .padding(.bottom, 144)
             }
         }

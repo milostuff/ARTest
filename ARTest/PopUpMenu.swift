@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct PopUpMenu: View {
+    @Binding var showText: Bool
     var body: some View {
         HStack {
-            MenuItem()
+            MenuItem(showText: $showText)
             Spacer()
         }
     }
 }
 
 struct MenuItem: View {
-    
+    @Binding var showText: Bool
     var body: some View {
         HStack {
             ItemFormat(systemIconName: "textformat.alt") {
-                print("Text button pressed")
+                spawnText(showText: $showText)
             }.offset(x:100, y: 50)
 
             Spacer()
@@ -67,7 +68,7 @@ struct ItemFormat: View {
 }
 
 #Preview {
-    PopUpMenu()
+    //PopUpMenu()
 }
 
 

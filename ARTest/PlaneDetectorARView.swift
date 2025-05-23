@@ -107,6 +107,15 @@ class PlaneDetectorARView: ARView {
         
         anchorEntity.addChild(parentEntity)
         self.scene.addAnchor(anchorEntity)
+        
+        
+        // Save to CloudKit
+        saveToCloudKit(
+            currentText,
+            position: anchorEntity.position(relativeTo: nil),
+            rotation: anchorEntity.orientation(relativeTo: nil),
+            scale: textEntity.scale.x
+        )
     }
     
     @MainActor required dynamic init?(coder decoder: NSCoder) {

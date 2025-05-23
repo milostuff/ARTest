@@ -15,8 +15,7 @@ struct ControlView: View {
             ControlButtonBar(showText: $showText)
         }
     }
-}
-
+} 
 
 struct TabAddMediaIcon: View { 
     @Binding var showMenu: Bool

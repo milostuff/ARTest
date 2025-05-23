@@ -33,7 +33,9 @@ class PlaneDetectorARView: ARView {
         if ARWorldTrackingConfiguration.supportsSceneReconstruction(.meshWithClassification) {
             config.sceneReconstruction = .meshWithClassification
         }
-        
+         
+        self.loadAndPlaceSavedTexts()
+
         self.session.run(config)
     }
     

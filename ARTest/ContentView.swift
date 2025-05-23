@@ -30,8 +30,7 @@ struct ContentView: View {
             if(showTextInputView) {
                 InputTextView(arText: $arText, scale: $scale)
             }
-        }
-        .onTapGesture {
+        }        .onTapGesture {
             isButtonVisible.toggle()
         }
         .edgesIgnoringSafeArea(.all)

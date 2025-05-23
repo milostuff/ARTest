@@ -45,6 +45,7 @@ struct ControlButtonBar: View {
     
     @State private var showMenu = false
     @State var showBrowse: Bool = false
+    @State var showRecord: Bool = false
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -63,7 +64,7 @@ struct ControlButtonBar: View {
             .padding(30)
             
             if showMenu {
-                PopUpMenu(showBrowse: $showBrowse)
+                PopUpMenu(showBrowse: $showBrowse, showRecord: $showRecord)
                     .padding(.bottom, 144)
             }
         }

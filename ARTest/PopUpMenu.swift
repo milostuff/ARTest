@@ -10,10 +10,11 @@ import SwiftUI
 struct PopUpMenu: View {
     
     @Binding var showBrowse: Bool
+    @Binding var showRecord: Bool
     
     var body: some View {
         HStack {
-            MenuItem(showBrowse: $showBrowse)
+            MenuItem(showBrowse: $showBrowse, showRecord: $showRecord)
             Spacer()
         }
     }
@@ -22,6 +23,7 @@ struct PopUpMenu: View {
 struct MenuItem: View {
     
     @Binding var showBrowse: Bool
+    @Binding var showRecord: Bool
     
     var body: some View {
         HStack {
@@ -33,11 +35,15 @@ struct MenuItem: View {
 
             ItemFormat(systemIconName: "microphone.fill") {
                 print("Microphone button pressed")
-            }
+                self.showRecord.toggle()
+            }.sheet(isPresented: $showRecord, content: {
+                VoiceRecorder(showRecord: $showRecord)
+                    .presentationDetents([.medium])
+            })
 
             Spacer()
 
-            ItemFormat(systemIconName: "photo") {
+            ItemFormat(systemIconName: "face.dashed.fill") {
                 print("Image/Sticker button pressed")
                 self.showBrowse.toggle()
             }.offset(x: -100, y: 50)
@@ -67,7 +73,7 @@ struct ItemFormat: View {
                     .shadow(radius: 4)
                 
                 Image(systemName: systemIconName)
-                    .font(.system(size: 20))
+                    .font(.system(size: 25))
                     .foregroundColor(.black)
                     .buttonStyle(PlainButtonStyle())
             }

@@ -8,19 +8,16 @@
 import SwiftUI
 
 struct ControlView: View {
-    
+    @Binding var showText: Bool
     var body: some View {
         VStack {
-            Spacer()
-        
-            ControlButtonBar()
+            Spacer() 
+            ControlButtonBar(showText: $showText)
         }
     }
-}
+} 
 
-
-struct TabAddMediaIcon: View {
-    
+struct TabAddMediaIcon: View { 
     @Binding var showMenu: Bool
     
     var body: some View {
@@ -36,21 +33,16 @@ struct TabAddMediaIcon: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 50, height: 50)
                 .rotationEffect(Angle(degrees: showMenu ? 45 : 0))
-                
         }
     }
 }
 
 struct ControlButtonBar: View {
-    
     @State private var showMenu = false
-    @State var showBrowse: Bool = false
-    @State var showRecord: Bool = false
-    
+    @Binding var showText: Bool
     var body: some View {
         ZStack(alignment: .bottom) {
             HStack {
-                
                 TabAddMediaIcon(showMenu: $showMenu)
                     .onTapGesture {
                         withAnimation {
@@ -64,7 +56,7 @@ struct ControlButtonBar: View {
             .padding(30)
             
             if showMenu {
-                PopUpMenu(showBrowse: $showBrowse, showRecord: $showRecord)
+                PopUpMenu(showText: $showText)
                     .padding(.bottom, 144)
             }
         }

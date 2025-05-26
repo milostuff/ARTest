@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ControlView: View {
     
-    @State var showText: Bool = false
-    @State var showBrowse: Bool = false
-    @State var showRecord: Bool = false
+    @State var showText: Bool
+    @State var showBrowse: Bool
+    @State var showRecord: Bool 
     
     var body: some View {
         VStack {
@@ -45,8 +45,8 @@ struct ControlButtonBar: View {
     
     @State private var showMenu = false
     @State var showText: Bool
-    @State var showBrowse: Bool
-    @State var showRecord: Bool
+    @State var showBrowse: Bool = false
+    @State var showRecord: Bool = false
     
     var body: some View {
         ZStack(alignment: .bottom) {

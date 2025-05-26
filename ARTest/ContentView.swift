@@ -18,13 +18,16 @@ struct ContentView: View {
 
     @State private var showTextInputView: Bool = false
     
+    @State private var showBrowse: Bool = false
+    @State private var showRecordInputView: Bool = false
+    
     @State private var isButtonVisible: Bool = true
     
     var body: some View {
         ZStack(alignment: .bottom) {
             ARViewContainer(text: $arText, scale: $scale)
             if(isButtonVisible){
-                ControlView(showText: showTextInputView)
+                ControlView(showText: showTextInputView, showBrowse: showBrowse, showRecord: showRecordInputView)
             }
             
             if(showTextInputView) {

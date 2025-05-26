@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ARTestApp: App {
+    @StateObject var placementSettings = PlacementSettings()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(placementSettings)
         }
     }
 }

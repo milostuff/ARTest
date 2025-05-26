@@ -12,6 +12,9 @@ import FocusEntity
 import Combine
 
 struct ContentView: View {
+    
+    @EnvironmentObject var placementSettings: PlacementSettings
+    
     //Text Input variables
     @State private var arText: String = "Hello AR!"
     @State private var scale: Float = 1.0

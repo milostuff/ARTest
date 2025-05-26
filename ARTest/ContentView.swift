@@ -24,7 +24,7 @@ struct ContentView: View {
         ZStack(alignment: .bottom) {
             ARViewContainer(text: $arText, scale: $scale)
             if(isButtonVisible){
-                ControlView(showText: $showTextInputView)
+                ControlView(showText: showTextInputView)
             }
             
             if(showTextInputView) {

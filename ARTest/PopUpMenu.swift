@@ -9,12 +9,13 @@ import SwiftUI
 
 struct PopUpMenu: View {
     
+    @Binding var showText: Bool
     @Binding var showBrowse: Bool
     @Binding var showRecord: Bool
     
     var body: some View {
         HStack {
-            MenuItem(showBrowse: $showBrowse, showRecord: $showRecord)
+            MenuItem(showText: $showText, showBrowse: $showBrowse, showRecord: $showRecord)
             Spacer()
         }
     }
@@ -22,6 +23,7 @@ struct PopUpMenu: View {
 
 struct MenuItem: View {
     
+    @Binding var showText: Bool
     @Binding var showBrowse: Bool
     @Binding var showRecord: Bool
     

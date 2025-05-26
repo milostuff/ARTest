@@ -93,7 +93,7 @@ func saveToCloudKit(_ text: String, position: SIMD3<Float>, rotation: simd_quatf
     
     record["scale"] = Double(scale) as CKRecordValue
     
-    let db = CKContainer.init(identifier: "iCloud.com.luckystrike.fundalize", ).publicCloudDatabase
+    let db = CKContainer.init(identifier: "iCloud.com.luckystrike.fundalize" ).publicCloudDatabase
     db.save(record) { _, error in
         if let error = error {
             print("CloudKit Save Failed: \(error.localizedDescription)")

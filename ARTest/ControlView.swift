@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ControlView: View {
-    @Binding var showText: Bool
+    
+    @State var showText: Bool = false
+    @State var showBrowse: Bool = false
+    @State var showRecord: Bool = false
+    
     var body: some View {
         VStack {
             Spacer() 
-            ControlButtonBar(showText: $showText)
+            ControlButtonBar(showText: showText, showBrowse: showBrowse, showRecord: showRecord)
         }
     }
 } 
@@ -38,8 +42,12 @@ struct TabAddMediaIcon: View {
 }
 
 struct ControlButtonBar: View {
+    
     @State private var showMenu = false
-    @Binding var showText: Bool
+    @State var showText: Bool
+    @State var showBrowse: Bool
+    @State var showRecord: Bool
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             HStack {
@@ -56,7 +64,7 @@ struct ControlButtonBar: View {
             .padding(30)
             
             if showMenu {
-                PopUpMenu(showText: $showText)
+                PopUpMenu(showText: $showText, showBrowse: $showBrowse, showRecord: $showRecord)
                     .padding(.bottom, 144)
             }
         }
